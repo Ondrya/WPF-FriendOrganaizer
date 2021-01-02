@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="5.2.0" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FriendOrganaizer.DataAccess\FriendOrganaizer.DataAccess.csproj" />
     <ProjectReference Include="..\FriendOrganaizer.Model\FriendOrganaizer.Model.csproj" />
   </ItemGroup>
 
