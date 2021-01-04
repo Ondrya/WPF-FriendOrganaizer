@@ -11,31 +11,21 @@ namespace FriendOrganaizer.UI.ViewModel
         private IFriendDataService _friendDataService;
         private Friend _selectedFriend;
 
-        public MainViewModel(IFriendDataService friendDataService)
+        public MainViewModel(
+            INavigationViewModel navigationViewModel,
+            IFriendDetailViewModel friendDetailViewModel
+        )
         {
-            Friends = new ObservableCollection<Friend>();
-            _friendDataService = friendDataService;
+            NavigationViewModel = navigationViewModel;
+            FriendDetailViewModel = friendDetailViewModel;
         }
+
+        public INavigationViewModel NavigationViewModel { get; }
+        public IFriendDetailViewModel FriendDetailViewModel { get; set; }
 
         public async Task LoadAsync()
         {
-            var friends = await _friendDataService.GetAllAsync();
-            Friends.Clear();
-            foreach (var item in friends)
-            {
-                Friends.Add(item);
-            }
-        }
-
-        public ObservableCollection<Friend> Friends { get; set; }
-
-        public Friend SelectedFriend
-        {
-            get { return _selectedFriend; }
-            set { 
-                _selectedFriend = value; 
-                OnPropertyChanged(nameof(SelectedFriend));
-            }            
+            await NavigationViewModel.LoadAsync();
         }
     }
 }

@@ -12,5 +12,9 @@ namespace FriendOrganaizer.Model
         public string LastName { get; set; }
         [StringLength(100)]
         public string Email { get; set; }
+
+        //public string FullName { 
+        //    get => $"{LastName} {FirstName}"; 
+        //}
     }
 }
